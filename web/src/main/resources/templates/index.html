@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Tienda de Ropa JPS-HPA-CGS</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body class="pagina-inicio">
+
+<nav>
+    <a th:href="@{/}">Inicio</a>
+    <a th:href="@{/categorias}">Colecciones</a>
+    <a th:href="@{/sobre-nosotros.html}">La Marca</a>
+    <button id="toggle-modo" class="btn-modo">🌙 Modo Oscuro</button>
+</nav>
+
+<div class="portada-hero">
+    <h1>Elegancia Atemporal</h1>
+    <p>Descubre nuestra nueva colección de temporada. Diseños exclusivos pensados para destacar tu estilo único con la máxima comodidad.</p>
+    <a th:href="@{/categorias}" class="btn-detalle">Descubrir Colecciones</a>
+</div>
+
+<footer>
+    &copy; 2026 Tienda JPS-HPA-CGS. Todos los derechos reservados.
+</footer>
+
+<script th:src="@{/js/modo-oscuro.js}"></script>
+</body>
+</html>

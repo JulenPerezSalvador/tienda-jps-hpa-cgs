@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${categoria.nombre}">Detalle de Categoría</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<nav>
+    <a th:href="@{/}">Inicio</a>
+    <a th:href="@{/categorias}">Colecciones</a>
+    <a th:href="@{/sobre-nosotros.html}">La Marca</a>
+    <button id="toggle-modo" class="btn-modo">🌙 Modo Oscuro</button>
+</nav>
+
+<div class="contenedor-detalle">
+
+    <div class="detalle-imagen">
+
+        <img th:src="${categoria.imagen != null and !categoria.imagen.isEmpty()} ? @{'/imagenes/categorias/' + ${categoria.imagen}} : @{/imagenes/categorias/foto-equipo.jpg}"
+             th:data-fallback="@{/imagenes/categorias/ImagenNoDisponible.png}"
+             onerror="this.onerror=null; this.src=this.getAttribute('data-fallback');"
+             th:alt="'Imagen de la colección ' + ${categoria.nombre}">
+
+    </div>
+
+    <div class="detalle-info">
+        <h1 th:text="${categoria.nombre}">Nombre de la Colección</h1>
+        <p th:text="${categoria.descripcion}">Aquí va la descripción detallada de los tejidos, la inspiración de la temporada y la elegancia de las prendas.</p>
+
+        <a th:href="@{/categorias}" class="btn-detalle">Volver al catálogo</a>
+    </div>
+</div>
+
+<script th:src="@{/js/modo-oscuro.js}"></script>
+
+<footer>
+    &copy; 2026 Tienda JPS-HPA-CGS. Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

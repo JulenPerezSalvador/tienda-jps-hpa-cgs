@@ -1,0 +1,355 @@
+/* --- RESET Y FUENTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- DETALLES PREMIUM: SELECCIÓN Y SCROLLBAR --- */
+::selection { background-color: #111; color: #fff; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f9f9f9; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+    line-height: 1.5;
+    animation: fadeIn 0.8s ease-out forwards;
+
+    /* TRUCO PARA EL FOOTER AL FONDO */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- NAVEGACIÓN ESTILO ZARA --- */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eeeeee;
+    background-color: rgba(255, 255, 255, 0.95); /* Ligeramente translúcido */
+    backdrop-filter: blur(5px); /* Efecto cristal */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    text-decoration: none;
+    color: #111;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 20px;
+    position: relative; /* Para el efecto de subrayado */
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #888888;
+}
+
+/* --- TITULARES --- */
+h1, h2 {
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 40px 0;
+    font-size: 28px;
+}
+
+/* --- REJILLA DE CATÁLOGO --- */
+.contenedor-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto 60px;
+}
+
+.tarjeta-categoria {
+    text-align: center;
+}
+
+.tarjeta-categoria img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease, opacity 0.3s ease; /* Transición más suave */
+}
+
+.tarjeta-categoria:hover img {
+    opacity: 0.85;
+    transform: scale(1.02); /* Efecto zoom sutil al pasar el ratón */
+}
+
+.tarjeta-categoria h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.tarjeta-categoria p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* --- BOTONES MINIMALISTAS --- */
+.btn-detalle {
+    display: inline-block;
+    border: 1px solid #111;
+    background-color: transparent;
+    color: #111;
+    padding: 10px 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.btn-detalle:hover {
+    background-color: #111;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave al hacer hover */
+}
+
+/* --- PÁGINA DE DETALLE DE PRODUCTO --- */
+.contenedor-detalle {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 5%;
+    align-items: center;
+    gap: 50px;
+}
+
+.detalle-imagen {
+    flex: 1;
+}
+
+.detalle-imagen img {
+    width: 100%;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.detalle-info {
+    flex: 1;
+    text-align: left;
+}
+
+.detalle-info h1 {
+    text-align: left;
+    margin: 0 0 20px 0;
+}
+
+.detalle-info p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* =========================================================
+   SECCIÓN DE PORTADA (FONDO PANTALLA COMPLETA)
+========================================================= */
+
+/* Fondo fijo que ocupa toda la pantalla solo en el body.pagina-inicio */
+body.pagina-inicio::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../imagenes/categorias/logo.jpeg');
+    background-size: cover; /* Para que ocupe todo sin deformarse */
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25; /* Resalta más que antes */
+    z-index: -1;
+}
+
+/* Ajuste del fondo en modo oscuro */
+body.dark-mode.pagina-inicio::before {
+    opacity: 0.15;
+}
+
+/* Ajustes del texto para que encaje perfecto con el fondo */
+.portada-hero {
+    text-align: center;
+    padding: 15vh 20px; /* Centrado vertical adaptativo */
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.portada-hero h1,
+.portada-hero p,
+.portada-hero .btn-detalle {
+    position: relative;
+    z-index: 2; /* Siempre por encima del fondo */
+}
+
+.portada-hero p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #333; /* Un poco más oscuro para contrastar con el fondo visible */
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* ========================================================= */
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333333;
+    border-top: 1px solid #e0e0e0;
+
+    /* ESTA LÍNEA HACE LA MAGIA DE EMPUJARLO ABAJO */
+    margin-top: auto;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: #fafafa;
+}
+
+/* --- BOTÓN MODO OSCURO --- */
+.btn-modo {
+    background: transparent;
+    border: 1px solid #111;
+    color: #111;
+    padding: 8px 15px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 5%;
+}
+
+.btn-modo:hover {
+    background: #111;
+    color: #fff;
+}
+
+/* --- ESTILOS DEL MODO OSCURO --- */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode ::selection { background-color: #e0e0e0; color: #111; }
+body.dark-mode ::-webkit-scrollbar-track { background: #1a1a1a; }
+body.dark-mode ::-webkit-scrollbar-thumb { background: #444; }
+body.dark-mode ::-webkit-scrollbar-thumb:hover { background: #666; }
+
+body.dark-mode nav {
+    background-color: rgba(26, 26, 26, 0.95);
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode nav a,
+body.dark-mode .btn-modo {
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+body.dark-mode nav a:hover {
+    color: #888;
+}
+
+body.dark-mode .btn-modo:hover {
+    background: #e0e0e0;
+    color: #121212;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .tarjeta-categoria {
+    background: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .tarjeta-categoria p,
+body.dark-mode .portada p,
+body.dark-mode .contenido-texto p,
+body.dark-mode .contenido-legal p,
+body.dark-mode .contenido-legal li {
+    color: #aaaaaa;
+}
+
+body.dark-mode .btn-detalle {
+    border-color: #e0e0e0;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-detalle:hover {
+    background-color: #e0e0e0;
+    color: #121212;
+}
+
+/* Asegurar el contraste del texto de la portada en el modo oscuro */
+body.dark-mode .portada-hero p {
+    color: #dddddd;
+}
+
+body.dark-mode footer {
+    background-color: #0d0d0d; /* Fondo un pelín más oscuro que el resto de la web */
+    border-top-color: #222222;
+    color: #cccccc; /* Gris muy clarito para que resalte sobre el fondo negro */
+}
+
+/* --- ADAPTABILIDAD A MÓVILES (NUEVO) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    .btn-modo {
+        position: relative; /* Quita el botón de la esquina en móviles */
+        right: auto;
+    }
+
+    .contenedor-detalle {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .tarjeta-categoria img {
+        height: 350px; /* Reduce un poco la altura de las fotos en móvil */
+    }
+
+    h1 { font-size: 22px; }
+}

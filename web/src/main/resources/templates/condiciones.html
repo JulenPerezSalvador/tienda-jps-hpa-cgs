@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Condiciones - Tienda de Ropa JPS-HPA-CGS</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<nav>
+    <a th:href="@{/}">Inicio</a>
+    <a th:href="@{/categorias}">Colecciones</a>
+    <a th:href="@{/sobre-nosotros.html}">La Marca</a>
+    <button id="toggle-modo" class="btn-modo">🌙 Modo Oscuro</button>
+</nav>
+
+<div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+    <h1 style="text-align:center;">Políticas de Compra</h1>
+    <p style="text-align: center; margin-bottom: 50px; color: #888; font-size: 13px;">
+        Por favor, lee detenidamente nuestras condiciones antes de realizar tu pedido.
+    </p>
+
+    <ul style="padding-left: 20px;">
+        <li style="margin-bottom: 20px; color: #444; font-size: 14px;"><strong>Disponibilidad:</strong> Todos los artículos están sujetos a disponibilidad de stock en nuestros almacenes.</li>
+        <li style="margin-bottom: 20px; color: #444; font-size: 14px;"><strong>Impuestos y Precios:</strong> Los precios mostrados incluyen el IVA y demás impuestos correspondientes.</li>
+        <li style="margin-bottom: 20px; color: #444; font-size: 14px;"><strong>Devoluciones:</strong> Dispones de un plazo de 30 días naturales para devoluciones.</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 60px;">
+        <a th:href="@{/}" class="btn-detalle">Aceptar y Volver</a>
+    </div>
+</div>
+<script th:src="@{/js/modo-oscuro.js}"></script>
+<footer>
+    &copy; 2026 Tienda JPS-HPA-CGS. Todos los derechos reservados.
+</footer>
+</body>
+</html>

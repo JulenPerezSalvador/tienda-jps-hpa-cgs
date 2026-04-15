@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuestras Colecciones</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<nav>
+    <a th:href="@{/}">Inicio</a>
+    <a th:href="@{/sobre-nosotros.html}">La Marca</a>
+    <a th:href="@{/condiciones}">Condiciones</a>
+    <button id="toggle-modo" class="btn-modo">🌙 Modo Oscuro</button>
+</nav>
+
+<h2>Nuestras Colecciones</h2>
+
+<div class="contenedor-categorias">
+    <div th:each="cat : ${categorias}" class="tarjeta-categoria">
+
+        <img th:src="${cat.imagen != null and !cat.imagen.isEmpty()} ? @{'/imagenes/categorias/' + ${cat.imagen}} : @{/imagenes/categorias/foto-equipo.jpg}"
+             th:data-fallback="@{/imagenes/categorias/ImagenNoDisponible.png}"
+             onerror="this.onerror=null; this.src=this.getAttribute('data-fallback');"
+             th:alt="'Colección ' + ${cat.nombre}">
+
+        <h3 th:text="${cat.nombre}">Nombre</h3>
+        <p th:text="${cat.descripcion}">Descripción</p>
+
+        <a th:href="@{/categorias/{id}(id=${cat.id})}" class="btn-detalle">Ver Colección</a>
+    </div>
+</div>
+
+<script th:src="@{/js/modo-oscuro.js}"></script>
+
+<footer>
+    &copy; 2026 Tienda JPS-HPA-CGS. Todos los derechos reservados.
+</footer>
+
+</body>
+</html>
