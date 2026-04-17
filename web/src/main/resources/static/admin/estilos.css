@@ -1,0 +1,184 @@
+/* --- IMPORTACIÓN DE FUENTES PREMIUM --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@200;400;700&display=swap');
+
+:root {
+    --primary: #000000;
+    --accent: #8e8e8e;
+    --bg-soft: #fcfcfc;
+    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- RESET Y BASE --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-soft);
+    color: var(--primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- NAVEGACIÓN LUXURY --- */
+.navbar {
+    background-color: rgba(252, 252, 252, 0.9) !important;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 20px 0;
+    transition: var(--transition-smooth);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 5px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 15px;
+    color: var(--primary) !important;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- SECCIÓN HERO (PORTADA) --- */
+.hero-section {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+    url('../imagenes/categorias/logo.jpeg') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 300;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: reveal 1.2s forwards 0.5s;
+}
+
+/* --- TARJETAS DE PRODUCTO (GRID PROFESIONAL) --- */
+.product-card {
+    border: none;
+    background: transparent;
+    margin-bottom: 4rem;
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background-color: #f1f1f1;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+.product-info {
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.product-category {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.product-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- BOTONES DE ACCIÓN --- */
+.btn-luxury {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 18px 45px;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+    position: relative;
+    z-index: 1;
+}
+
+.btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0; height: 100%;
+    background: var(--accent);
+    transition: var(--transition-smooth);
+    z-index: -1;
+}
+
+.btn-luxury:hover::before {
+    width: 100%;
+}
+
+.btn-luxury:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- ANIMACIONES --- */
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 100px 0 50px;
+    background: white;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-link {
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

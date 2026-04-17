@@ -1,7 +1,9 @@
 package es.iesclaradelrey.da2d1a.common.repositories;
 
 import es.iesclaradelrey.da2d1a.common.entities.Categoria;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-//Patron del repositorio en este caso con los tipos de datos puestos Categoria y numero
-public interface ICategoriaRepository extends Repository<Categoria, Long> {
+@Repository
+public interface ICategoriaRepository extends JpaRepository<Categoria, Long> {
 }
