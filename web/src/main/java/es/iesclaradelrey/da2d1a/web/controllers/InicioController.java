@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class InicioController {
-    // es como si fuera una doble ruta por si se quita la barra del final
-    @GetMapping({"/", ""})
-    public String index() {
+
+    @GetMapping("/")
+    public String inicio() {
         return "index";
+
     }
 }

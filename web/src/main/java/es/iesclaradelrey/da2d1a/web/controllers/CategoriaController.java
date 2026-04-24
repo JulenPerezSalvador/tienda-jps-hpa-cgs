@@ -17,15 +17,18 @@ public class CategoriaController {
         this.categoriaService = categoriaService;
     }
 
-    @GetMapping({"/", ""})
+    @GetMapping({"", "/"})
     public String listar(Model model) {
         model.addAttribute("categorias", categoriaService.findAll());
         return "categorias-listado";
     }
 
     @GetMapping("/{id}")
-    public String detalle(@PathVariable Long id, Model model) {
-        categoriaService.findById(id).ifPresent(c -> model.addAttribute("categoria", c));
+    public String detalle(@PathVariable("id") Long id, Model model) {
+        categoriaService.findById(id).ifPresent(c -> {
+            c.getProductos().sort((p1, p2) -> p1.getNombre().compareToIgnoreCase(p2.getNombre()));
+            model.addAttribute("categoria", c);
+        });
         return "categoria-detalle";
     }
 }
