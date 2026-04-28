@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><title>Admin - Categorías</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light"><div class="container mt-5">
+    <div class="d-flex justify-content-between mb-4">
+        <h2>Gestión de Categorías</h2>
+        <div><a th:href="@{/admin}" class="btn btn-secondary me-2">Volver</a><a th:href="@{/admin/categorias/crear}" class="btn btn-success">Nueva Categoría</a></div>
+    </div>
+    <table class="table table-bordered bg-white shadow">
+        <thead class="table-dark"><tr><th>ID</th><th>Nombre</th><th>Acciones</th></tr></thead>
+        <tbody>
+        <tr th:each="c : ${categorias}">
+            <td th:text="${c.id}"></td><td th:text="${c.nombre}"></td>
+            <td>
+                <a th:href="@{/admin/categorias/editar/{id}(id=${c.id})}" class="btn btn-sm btn-warning">Editar</a>
+                <a th:href="@{/admin/categorias/borrar/{id}(id=${c.id})}" class="btn btn-sm btn-danger">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div></body></html>
