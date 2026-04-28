@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title th:text="${categoria.nombre}">Detalle de Categoría</title>
-    <link rel="stylesheet" th:href="@{/css/estilos.css}">
-</head>
+<head th:replace="~{fragments/head :: head-comun(titulo='Coleccion - ' + ${categoria.nombre})}"></head>
 <body>
+<div th:replace="~{fragments/navegacion :: menu-principal}"></div>
 
-<nav>
-    <a th:href="@{/}">Inicio</a>
-    <a th:href="@{/categorias}">Colecciones</a>
-    <a th:href="@{/sobre-nosotros.html}">La Marca</a>
-    <button id="toggle-modo" class="btn-modo">🌙 Modo Oscuro</button>
-</nav>
+<main class="container my-5 py-5" th:if="${categoria != null}">
+    <div class="text-center mb-5">
+        <h6 class="text-uppercase mb-2" style="letter-spacing: 5px; color: #8e8e8e;">Colección Privada</h6>
+        <h1 class="display-4 fw-light" th:text="${categoria.nombre}" style="font-family: 'Cormorant Garamond', serif;"></h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;" th:text="${categoria.descripcion}"></p>
+    </div>
 
-<div class="contenedor-detalle">
+    <div class="row g-4 mb-5">
 
-    <div class="detalle-imagen">
+        <div th:each="producto : ${categoria.productos}" class="col-12 mb-5">
+            <div class="row align-items-center justify-content-center">
 
-        <img th:src="${categoria.imagen != null and !categoria.imagen.isEmpty()} ? @{'/imagenes/categorias/' + ${categoria.imagen}} : @{/imagenes/categorias/foto-equipo.jpg}"
-             th:data-fallback="@{/imagenes/categorias/ImagenNoDisponible.png}"
-             onerror="this.onerror=null; this.src=this.getAttribute('data-fallback');"
-             th:alt="'Imagen de la colección ' + ${categoria.nombre}">
+                <div class="col-md-5 text-center">
+                    <div class="product-card" style="border: none;">
+                        <div class="product-image-wrapper mb-3">
+                            <img th:src="@{${producto.imagen != null ? producto.imagen : '/imagenes/categorias/carlos.jpg'}}" alt="Producto" class="img-fluid" style="max-width: 300px;">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category text-muted small mb-1" th:text="${producto.marca.nombre}"></p>
+                            <p class="product-name fw-bold fs-5 mb-1" th:text="${producto.nombre}"></p>
+                            <p class="fw-bold mb-3" th:text="${producto.precio} + ' €'"></p>
+                            <a th:href="@{/productos/{id}/{n}(id=${producto.id}, n=${producto.nombre})}" class="btn-luxury py-2 px-3" style="font-size: 0.6rem;">DETALLE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 text-start px-md-4 mt-4 mt-md-0">
+                    <h5 class="text-uppercase mb-3" style="letter-spacing: 2px;">Descripción y detalles</h5>
+                    <p class="text-muted" th:text="${producto.descripcion}">
+                        Aquí aparecerá la descripción del producto guardada en la base de datos.
+                    </p>
+                </div>
+
+            </div>
+            <hr class="mt-5 text-muted" th:if="${!productoStat.last}" style="opacity: 0.1;">
+        </div>
+
+        <div th:if="${#lists.isEmpty(categoria.productos)}" class="col-12 text-center py-5">
+            <p class="text-muted">Próximamente disponible.</p>
+        </div>
 
     </div>
 
-    <div class="detalle-info">
-        <h1 th:text="${categoria.nombre}">Nombre de la Colección</h1>
-        <p th:text="${categoria.descripcion}">Aquí va la descripción detallada de los tejidos, la inspiración de la temporada y la elegancia de las prendas.</p>
-
-        <a th:href="@{/categorias}" class="btn-detalle">Volver al catálogo</a>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <a th:href="@{/productos}" class="btn btn-outline-dark btn-lg rounded-0 px-5">VOLVER AL LISTADO</a>
     </div>
-</div>
+</main>
 
-<script th:src="@{/js/modo-oscuro.js}"></script>
-
-<footer>
-    &copy; 2026 Tienda JPS-HPA-CGS. Todos los derechos reservados.
+<footer class="text-center py-5 border-top">
+    <p class="small text-uppercase" style="letter-spacing: 3px;">&copy; 2026 JPS-HPA-CGS</p>
 </footer>
-
 </body>
 </html>
