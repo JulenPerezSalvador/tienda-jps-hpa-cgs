@@ -12,7 +12,7 @@
             <h2 class="text-danger mb-4">Confirmar Eliminación</h2>
             <p class="lead mb-5">¿Seguro que desea borrar el producto <br>
                 <strong th:text="${producto.nombre}"></strong>?</p>
-            <form th:action="@{/admin/productos/borrar/{id}(id=${producto.id})}" method="post">
+            <form th:action="@{/admin/productos/borrar/{id}(id=${producto.id})}" th:method="post">
                 <button type="submit" class="btn btn-danger btn-lg px-5 me-3">Aceptar</button>
                 <a th:href="@{/admin/productos}" class="btn btn-secondary btn-lg px-5">Cancelar</a>
             </form>

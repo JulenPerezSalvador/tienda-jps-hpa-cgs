@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <nav th:fragment="menu-principal" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -8,7 +9,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+
+            <!-- Links principales -->
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Inicio</a>
                 </li>
@@ -21,6 +24,53 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/sobre-nosotros}">La Marca</a>
                 </li>
+            </ul>
+
+            <!-- Bloque de autenticación -->
+            <ul class="navbar-nav ms-auto align-items-center">
+
+                <!-- Usuario AUTENTICADO -->
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link d-flex align-items-center gap-1" th:href="@{/users/profile}">
+                        <span style="font-size:0.85rem;">👤</span>
+                        <span class="small text-uppercase" style="letter-spacing:1px; font-size:0.65rem;"
+                              sec:authentication="name"></span>
+                    </a>
+                </li>
+
+                <!-- Separador visual -->
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <span class="nav-link px-1" style="color: rgba(255,255,255,0.3);">|</span>
+                </li>
+
+                <!-- Logout como link (POST via JS) -->
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post" id="logoutForm" class="m-0 p-0">
+                        <a href="#" role="button" tabindex="0"
+                           aria-label="Cerrar sesión"
+                           class="nav-link small text-uppercase"
+                           style="letter-spacing:1px; font-size:0.65rem; cursor:pointer;"
+                           onclick="document.getElementById('logoutForm').submit(); return false;">
+                            Salir
+                        </a>
+                    </form>
+                </li>
+
+                <!-- Usuario NO AUTENTICADO -->
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link small text-uppercase"
+                       style="letter-spacing:1px; font-size:0.65rem;"
+                       th:href="@{/login}">Iniciar sesión</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <span class="nav-link px-1" style="color: rgba(255,255,255,0.3);">|</span>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link small text-uppercase"
+                       style="letter-spacing:1px; font-size:0.65rem;"
+                       th:href="@{/register}">Registrarse</a>
+                </li>
+
             </ul>
         </div>
     </div>

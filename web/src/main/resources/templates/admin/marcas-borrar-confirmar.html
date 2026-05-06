@@ -14,7 +14,7 @@
                 ¿Seguro que desea borrar la marca <br>
                 <strong th:text="${marca.nombre}">Nombre de la Marca</strong>?
             </p>
-            <form th:action="@{/admin/marcas/borrar/{id}(id=${marca.id})}" method="post">
+            <form th:action="@{/admin/marcas/borrar/{id}(id=${marca.id})}" th:method="post">
                 <button type="submit" class="btn btn-danger btn-lg px-5 me-3">Aceptar</button>
                 <a th:href="@{/admin/marcas}" class="btn btn-secondary btn-lg px-5">Cancelar</a>
             </form>
