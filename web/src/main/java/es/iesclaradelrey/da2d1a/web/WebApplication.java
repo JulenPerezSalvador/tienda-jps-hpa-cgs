@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = "es.iesclaradelrey.da2d1a")
-@EntityScan(basePackages = "es.iesclaradelrey.da2d1a.common.entities") //Busca las tablas aquí
-@EnableJpaRepositories(basePackages = "es.iesclaradelrey.da2d1a.common.repositories") //Busca los repositorios JPA aquí
+@EntityScan(basePackages = "es.iesclaradelrey.da2d1a.common.entities")
+@EnableJpaRepositories(basePackages = "es.iesclaradelrey.da2d1a.common.repositories")
 public class WebApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebApplication.class, args);

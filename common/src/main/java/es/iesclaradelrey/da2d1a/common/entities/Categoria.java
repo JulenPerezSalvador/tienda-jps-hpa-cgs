@@ -25,9 +25,6 @@ public class Categoria {
     private String imagen;
 
     @ToString.Exclude
-    //Lo que hace es evitar un problema de lombook que es poner
-    //el toString a las categorias y productos y asi todo el rato lo que
-    //hace es parar ese bucle infinito y solo hacer el tostring de categorias
     @ManyToMany(mappedBy = "categorias")
     private List<Producto> productos = new ArrayList<>();
 }

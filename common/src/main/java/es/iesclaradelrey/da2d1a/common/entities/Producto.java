@@ -33,7 +33,7 @@ public class Producto {
     @Column(nullable = false)
     private Integer descuento;
 
-    @ManyToOne(optional = false)//No puede estar vacio es decir not null
+    @ManyToOne(optional = false)
     @JoinColumn(name = "marca_id")
     private Marca marca;
 
