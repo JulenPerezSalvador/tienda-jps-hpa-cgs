@@ -1,12 +1,16 @@
 package es.iesclaradelrey.da2d1a.common.services;
 
 import es.iesclaradelrey.da2d1a.common.entities.Producto;
+import org.springframework.data.domain.Sort;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface IProductoService {
     List<Producto> findAll();
+    List<Producto> findAll(Sort sort);
+    List<Producto> findByCategoriaId(Long categoriaId, Sort sort);
     Optional<Producto> findById(Long id);
-    void save(Producto producto);
+    Producto save(Producto p);
     void deleteById(Long id);
 }
