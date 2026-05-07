@@ -33,6 +33,9 @@ public class Producto {
     @Column(nullable = false)
     private Integer descuento;
 
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 10")
+    private Integer stock = 10;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "marca_id")
     private Marca marca;

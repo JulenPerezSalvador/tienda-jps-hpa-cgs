@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="pie-pagina" class="border-top mt-auto py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                <span class="fw-bold text-uppercase" style="letter-spacing: 4px; font-size: 0.8rem;">JPS-HPA-CGS</span>
+            </div>
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                <p class="small text-uppercase mb-0" style="letter-spacing: 3px; color: #aaa; font-size: 0.65rem;">
+                    &copy; 2026 JPS-HPA-CGS Global
+                </p>
+            </div>
+            <div class="col-md-4 text-center text-md-end">
+                <a th:href="@{/condiciones}" class="text-muted text-decoration-none small text-uppercase"
+                   style="letter-spacing: 2px; font-size: 0.65rem;">Condiciones</a>
+                <span class="text-muted mx-2">·</span>
+                <a th:href="@{/sobre-nosotros}" class="text-muted text-decoration-none small text-uppercase"
+                   style="letter-spacing: 2px; font-size: 0.65rem;">La Marca</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
