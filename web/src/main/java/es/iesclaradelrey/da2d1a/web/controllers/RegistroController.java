@@ -34,6 +34,7 @@ public class RegistroController {
         model.addAttribute("usuarioDTO", new UsuarioRegistroDTO());
         return "register";
     }
+
     @PostMapping
     public String procesarRegistro(@Valid @ModelAttribute("usuarioDTO") UsuarioRegistroDTO dto,
                                    BindingResult result,
@@ -57,6 +58,7 @@ public class RegistroController {
             nuevo.setFechaNacimiento(dto.getFechaNacimiento());
             nuevo.setContrasena(passwordEncoder.encode(dto.getContrasena()));
             nuevo.setFechaRegistro(LocalDateTime.now());
+
             Optional<Rol> rolUser = rolService.findById("USER");
             rolUser.ifPresent(rol -> nuevo.getRoles().add(rol));
 

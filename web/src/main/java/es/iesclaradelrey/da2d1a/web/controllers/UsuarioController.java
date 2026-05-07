@@ -34,6 +34,7 @@ public class UsuarioController {
         return "login";
     }
 
+
     @GetMapping("/users/profile")
     public String miPerfil(Authentication authentication, Model model) {
         UsuarioDetails principal = (UsuarioDetails) authentication.getPrincipal();
@@ -42,6 +43,7 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario);
         return "users/perfil";
     }
+
 
     @GetMapping("/users/profile/{userId}")
     @PreAuthorize("hasRole('ADMIN') or principal.id == #userId")
