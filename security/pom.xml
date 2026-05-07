@@ -13,20 +13,17 @@
     <artifactId>tienda-jps-hpa-cgs-security</artifactId>
 
     <dependencies>
-        <!-- Depende de common para acceder a entidades y servicios -->
         <dependency>
             <groupId>es.iesclaradelrey.da2d1a</groupId>
             <artifactId>tienda-jps-hpa-cgs-common</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Jakarta Servlet (para los handlers) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -36,8 +33,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
-            <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>
